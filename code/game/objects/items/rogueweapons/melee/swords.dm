@@ -1087,6 +1087,7 @@
 	minstr = 6
 	wdefense = 7.5
 	wbalance = WBALANCE_SWIFT
+	special = /datum/special_intent/piercing_lunge
 
 /obj/item/rogueweapon/sword/rapier/vaquero
 	name = "cup-hilt rapier"
@@ -1726,3 +1727,10 @@
 
 	grid_width = 32
 	grid_height = 96
+
+/obj/item/rogueweapon/sword/holysteel
+	name = "Judgements Edge"
+	desc = "I come not bearing peace, but a sword. To bring True Justice to this world."
+	icon_state = "ravsword"
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 250

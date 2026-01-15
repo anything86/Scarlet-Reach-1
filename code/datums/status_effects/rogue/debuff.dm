@@ -1026,4 +1026,50 @@
 		return
 
 	owner.emote(pick("chuckle", "giggle"))
+
 //baotha stuff end
+
+/datum/status_effect/debuff/hobbled
+	id = "hobbled"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/hobbled
+	effectedstats = list(STATKEY_SPD = -2)
+	duration = 8 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/hobbled
+	name = "Hobbled"
+	desc = "You've been struck in the leg! The force has left you staggered!"
+	icon_state = "dazed"
+
+/datum/status_effect/debuff/hobbled/on_apply()
+		. = ..()
+		var/mob/living/carbon/C = owner
+		C.add_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN, multiplicative_slowdown = 1.5)
+
+/datum/status_effect/debuff/hobbled/on_remove()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.remove_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN)
+
+//quest stuff + old silver buff
+
+/datum/status_effect/debuff/quest_lock
+	id = "quest_lock"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/quest_lock
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/quest_lock
+	name = "Edict of the Ten"
+	desc = "A sliver of sacred favor clings to you. Followers of the Ten will not enlist your aid in their routine."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/silver_curse
+	id = "silver_curse"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/silver_curse
+	effectedstats = list("strength" = -2,"perception" = -2,"intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
+	duration = 45 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/silver_curse
+	name = "Silver Curse"
+	desc = "My BANE!"
+	icon_state = "hunger3"

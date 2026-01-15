@@ -183,6 +183,9 @@
 
 			var/self_points = FLOOR((STACON + STASTR)/2, 1)
 			var/target_points = FLOOR((L.STACON + L.STASTR)/2, 1)
+			
+			src.log_message("charged into [key_name(M)]", LOG_ATTACK, color="red")
+			M.log_message("has been charged by [key_name(src)]", LOG_ATTACK, color="red")
 
 			switch(sprint_distance)
 				// Point blank
@@ -2106,9 +2109,7 @@
 	hide_cone()
 	var/ttime = 11
 	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 1
+		ttime = max(10 - (STAPER - 5), 5)
 	if(STAPER <= 10)
 		var/offset = (10 - STAPER) * 2
 		if(STAPER == 10)

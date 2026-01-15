@@ -452,7 +452,7 @@
 	force = 20
 	force_wielded = 30
 	item_flags = PEASANT_WEAPON
-	possible_item_intents = list(SPEAR_BASH, /datum/intent/spear/cut)
+	possible_item_intents = list(SPEAR_THRUST_1H, SPEAR_CUT_1H)
 	gripped_intents = list(/datum/intent/pick/ranged, /datum/intent/spear/thrust, SPEAR_BASH)
 	name = "militia goedendag"
 	desc = "Clubs - and their spiked descendants - are older than most languages and civilizations. Tyme hasn't made them any less deadly, however. "
@@ -584,7 +584,7 @@
 /datum/component/ignitable/proc/light_off()
 	var/obj/I = parent
 	I.set_light_on(FALSE)
-	playsound(get_turf(I), 'sound/items/firesnuff.ogg', 100)
+	playsound(I, 'sound/items/firesnuff.ogg', 100)
 
 /datum/component/ignitable/proc/update_icon()
 	var/obj/item/I = parent
